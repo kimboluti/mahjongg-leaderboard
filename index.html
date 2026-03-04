@@ -164,7 +164,7 @@
     </div>
     <div class="header-text">
       <div class="header-title">🀄 Mah Jongg Club</div>
-      <div class="header-sub">Community Center · 1st &amp; 3rd Wednesdays</div>
+      <div class="header-sub">Community Center · 1st &amp; 3rd Wednesdays · 6:30–8pm ET</div>
     </div>
     <div class="session-chip">
       <span class="chip-label">Next Meeting</span>
@@ -178,7 +178,7 @@
     <button class="tab-btn active" onclick="switchTab('leaderboard')">🏆 Leaderboard</button>
     <button class="tab-btn" onclick="switchTab('history')">Game History</button>
     <button class="tab-btn" onclick="switchTab('guide')">Scoring Guide</button>
-    <button class="tab-btn" onclick="switchTab('howto')">How to Update</button>
+    <button class="tab-btn" onclick="switchTab('howto')">About</button>
   </div>
 </div>
 
@@ -247,56 +247,42 @@
 
   <!-- HOW TO UPDATE -->
   <div class="panel" id="panel-howto">
-    <div class="sec-hdr"><div class="sec-title">How to Update the Leaderboard</div></div>
+    <div class="sec-hdr"><div class="sec-title">About This Leaderboard</div></div>
     <div class="guide-card">
 
-      <h3>Overview</h3>
-      <p>This page reads live from a Google Sheet. To update standings, just edit the Sheet — everyone sees the new data the next time they load or refresh the page. No coding required.</p>
+      <h3>How It Works</h3>
+      <p>This leaderboard reads live from a Google Sheet that is updated after each session. The next time you load or refresh the page, you'll see the latest standings. No app to install — just bookmark this page!</p>
 
-      <h3>One-Time Setup: Publish the Sheet</h3>
-      <p>The Sheet must be published so the website can read it. You only do this once:</p>
-      <div class="step"><div class="step-num">1</div><div class="step-body">Open your Google Sheet. Go to <strong>File → Share → Publish to web</strong>.</div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-body">In the first dropdown select <strong>Players</strong>, in the second select <strong>Comma-separated values (.csv)</strong>. Click <strong>Publish</strong>. Click OK.</div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-body">Repeat step 2 for the <strong>Games</strong> tab.</div></div>
-      <div class="callout callout-red">
-        ⚠️ The Sheet itself stays private — only you can edit it. Publishing to web only allows the site to <em>read</em> the data.
-      </div>
-
-      <h3>Tab 1 — Players</h3>
-      <p>Create a tab named exactly <code>Players</code>. Row 1 is the header. One member per row:</p>
-      <div class="callout callout-blue callout-mono">
-        <strong>id &nbsp; | name</strong><br>
-        1 &nbsp;&nbsp; | Rachel<br>
-        2 &nbsp;&nbsp; | Louise<br>
-        3 &nbsp;&nbsp; | Jeff<br>
-        4 &nbsp;&nbsp; | Donna<br>
-        5 &nbsp;&nbsp; | Ellie<br>
-        6 &nbsp;&nbsp; | Monica<br>
-        7 &nbsp;&nbsp; | Sasha<br>
-        8 &nbsp;&nbsp; | Sung<br>
-        9 &nbsp;&nbsp; | Lystra<br>
-        10 | Jill<br>
-        11 | Player 1<br>
-        12 | Player 2
-      </div>
-      <p>To rename a member, just change the name in this tab. Their stats will update automatically.</p>
-
-      <h3>Tab 2 — Games</h3>
-      <p>Create a tab named exactly <code>Games</code>. Row 1 is the header. Add one row per game after each session:</p>
-      <div class="callout callout-blue callout-mono">
-        <strong>date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| type | winner_id | points | player1_id | player2_id | player3_id | player4_id | notes</strong><br>
-        2026-03-05 | win &nbsp;| 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 50 &nbsp;&nbsp; | 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 7 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 9 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Concealed hand<br>
-        2026-03-05 | wall | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 4 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 6 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 10 &nbsp;&nbsp;&nbsp;&nbsp; |
-      </div>
-      <p style="margin-top:10px;"><strong>type</strong> is <code>win</code> or <code>wall</code>. For wall games, leave <code>winner_id</code> and <code>points</code> blank. Player id numbers come from the Players tab. The winner must be one of the four player columns. The <code>notes</code> column is optional.</p>
-
-      <h3>Logging a Game — Step by Step</h3>
-      <div class="step"><div class="step-num">1</div><div class="step-body">After a session, open your Google Sheet and click the <strong>Games</strong> tab.</div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-body">Add a new row at the bottom for each game played. Fill in the date in <code>YYYY-MM-DD</code> format, the result type, winner's id, point value, and all four player ids.</div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-body">Google Sheets auto-saves. Tell your club members to click <strong>↻ Refresh</strong> on the leaderboard page to see the new standings.</div></div>
       <div class="callout callout-blue">
-        💡 <strong>Tip:</strong> Keep a printed copy of the id-to-name list handy at games so you can quickly look up numbers when logging.
+        📋 <strong>Access to the score sheet is limited.</strong> If you notice a missing result, a scoring error, or have any questions about the leaderboard, contact <strong>Ellie</strong>.
       </div>
+
+      <h3>What the Columns Mean</h3>
+      <p>Each player's row tracks the following across all games played this season:</p>
+      <div class="callout callout-blue">
+        <strong>Points</strong> — total points earned from winning hands (accumulates all season)<br>
+        <strong>Wins</strong> — number of games won (Mah Jongg declared)<br>
+        <strong>Losses</strong> — number of games where someone else at your table won<br>
+        <strong>Walls</strong> — number of wall games (no winner) you were present for<br>
+        <strong>Games</strong> — total games played (wins + losses + walls)<br>
+        <strong>Win Rate</strong> — percentage of your games that you won<br>
+        <strong>Avg/Win</strong> — your average point value per winning hand
+      </div>
+      <p style="margin-top:10px;">Click any column header to re-sort. Click a player's row to expand their individual stats.</p>
+
+      <h3>How Winning Hands Are Recorded</h3>
+      <p>Each winning game includes a note identifying the hand played, using the format from the NMJL card:</p>
+      <div class="callout callout-blue callout-mono">
+        <strong>Format: CATEGORY_ROW</strong><br><br>
+        13579_1 &nbsp;&nbsp;→ "2024 Hands" section, row 1<br>
+        NEWS_5 &nbsp;&nbsp;&nbsp;→ "NEWS" section, row 5<br>
+        CONSEC_3 → "Consecutive Run" section, row 3
+      </div>
+      <p style="margin-top:10px;">This follows the naming convention of the annual NMJL card, where each section has a category name and numbered rows. You can see the winning hand in the Game History tab.</p>
+
+      <h3>Refreshing the Page</h3>
+      <p>After Ellie updates the score sheet following a session, click the <strong>↻ Refresh</strong> button on the Leaderboard tab to pull in the latest results. The page does not update automatically — a manual refresh is needed.</p>
+
     </div>
   </div>
 
@@ -560,22 +546,56 @@ function switchTab(name) {
 
 // ─── NEXT SESSION CHIP ────────────────────────────────────────────────────
 function initHeader() {
-  const now = new Date(), sessions = [];
+  // Meeting runs 6:30–8:00pm ET. We treat a session as "not yet over"
+  // until 8:00pm ET, so the chip won't flip to the next date mid-evening.
+  // ET is UTC-5 (EST) or UTC-4 (EDT). We determine the offset dynamically.
+  const now = new Date();
+
+  // Get current ET offset by checking what ET says the hour is
+  const etHourStr = now.toLocaleString('en-US', { timeZone: 'America/New_York', hour: 'numeric', hour12: false });
+  const etMinStr  = now.toLocaleString('en-US', { timeZone: 'America/New_York', minute: '2-digit' });
+  const etHour = parseInt(etHourStr);
+  const etMin  = parseInt(etMinStr);
+
+  // A session is "still happening" if today (ET) is a meeting day and it's before 8:00pm ET
+  const etDateStr = now.toLocaleDateString('en-US', { timeZone: 'America/New_York', weekday: 'long' });
+  const isWednesday = etDateStr === 'Wednesday';
+  const meetingStillOn = isWednesday && (etHour < 20); // before 8:00pm ET
+
+  const sessions = [];
   for (let m = 0; m < 4; m++) {
     const base = new Date(now.getFullYear(), now.getMonth() + m, 1);
     [1, 3].forEach(week => {
       const firstWed = 1 + ((3 - base.getDay() + 7) % 7);
       const nth = firstWed + (week - 1) * 7;
       if (nth <= new Date(base.getFullYear(), base.getMonth() + 1, 0).getDate()) {
-        const d = new Date(base.getFullYear(), base.getMonth(), nth);
-        if (d > now) sessions.push(d);
+        // Set the session end time to 8:00pm ET on that date
+        const sessionDate = new Date(base.getFullYear(), base.getMonth(), nth);
+        // Build an 8pm ET timestamp for that date using a formatted string
+        const endTimeET = new Date(`${base.getFullYear()}-${String(base.getMonth()+1).padStart(2,'0')}-${String(nth).padStart(2,'0')}T20:00:00`);
+        // Convert 8pm ET to UTC by using Intl to find the ET offset that day
+        const etMidnight = new Date(base.getFullYear(), base.getMonth(), nth, 0, 0, 0);
+        const utcOffsetMs = etMidnight - new Date(etMidnight.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+        const sessionEnd = new Date(base.getFullYear(), base.getMonth(), nth, 20, 0, 0, utcOffsetMs);
+        if (sessionEnd > now) sessions.push({ date: sessionDate, end: sessionEnd });
       }
     });
   }
-  sessions.sort((a, b) => a - b);
+  sessions.sort((a, b) => a.end - b.end);
+
   if (sessions.length) {
-    const next = sessions[0], days = Math.round((next - now) / 86400000);
-    const label = days === 0 ? 'Today!' : days === 1 ? 'Tomorrow' : `in ${days} days`;
+    const next = sessions[0].date;
+    // Days difference in ET calendar dates
+    const nowET   = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+    const nextET  = new Date(next.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+    const diffDays = Math.round((nextET.setHours(0,0,0,0) - nowET.setHours(0,0,0,0)) / 86400000);
+
+    let label;
+    if (diffDays === 0 && meetingStillOn) label = 'Tonight! 6:30–8pm';
+    else if (diffDays === 0) label = 'Today — starts 6:30pm';
+    else if (diffDays === 1) label = 'Tomorrow · 6:30–8pm';
+    else label = `in ${diffDays} days · 6:30–8pm`;
+
     document.getElementById('chip-date').innerHTML =
       `${next.toLocaleDateString('en-US',{month:'short',day:'numeric'})} <span style="font-weight:400;opacity:0.8;font-size:10px;">(${label})</span>`;
   }
