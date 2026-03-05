@@ -209,12 +209,12 @@
       <div class="sec-meta" id="rsvp-meta"></div>
       <button class="btn-refresh" onclick="loadRsvp()">↻ Refresh</button>
     </div>
-    <div id="rsvp-session-label" style="font-size:13px;color:var(--mid);margin-bottom:16px;"></div>
+    <div id="rsvp-session-label" style="font-size:13px;color:var(--mid);margin-bottom:12px;"></div>
+    <div id="rsvp-form-wrap" style="margin-bottom:16px;"></div>
     <div id="rsvp-area">
       <div class="status-box"><div class="spinner"></div><p>Loading signups…</p></div>
     </div>
     <p class="hint" style="margin-top:14px;">Signed up? Fill out the form below — it only takes a second.</p>
-    <div id="rsvp-form-wrap" style="margin-top:16px;"></div>
   </div>
 
   <!-- LEADERBOARD -->
@@ -336,7 +336,7 @@ const SIGNUPS_TAB = 'Signups'; // Form responses tab — rename to exactly this 
 
 // ── Paste your Google Form URL here after creating it ──────────────────
 // Leave as empty string '' to hide the form link until you're ready
-const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdWPc9BU3OuxDAYL7waBL6jioBuBJGOJSmXaCmn9Z0Ffapz7w/viewform?usp=publish-editor';
+const FORM_URL = '';
 
 
 function csvUrl(tab) {
