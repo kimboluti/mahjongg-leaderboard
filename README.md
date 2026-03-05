@@ -172,3 +172,105 @@ Enter the **total** (base + bonus) in the `points` column.
 Meets the 1st and 3rd Wednesday of each month, 6:30–8:00pm ET  
 700 N 3rd Street, Philadelphia PA 19123  
 [nlna.org/community-center](https://www.nlna.org/community-center)
+
+---
+
+## RSVP / Signup Feature
+
+### Overview
+
+The **RSVP tab** on the leaderboard shows who has signed up for the next session. It reads from a Google Form linked to your Sheet. The **Session tab** in the Sheet lets you check off who actually attended, and pre-populates player columns in the Games tab so you only need to fill in the winner and points.
+
+---
+
+### Step 1 — Create the Google Form
+
+1. Go to [forms.google.com](https://forms.google.com) and click **Blank form**
+2. Title it something like **NLNA Mah Jongg — Session Signup**
+3. Add a single question:
+   - Question text: **Your name**
+   - Question type: **Dropdown**
+   - Add all 12 player names as options: Rachel, Louise, Jeff, Donna, Ellie, Monica, Sasha, Sung, Lystra, Jill, Player 1, Player 2
+4. Click the **Send** button (top right) → copy the link — you'll need it in Step 3
+
+---
+
+### Step 2 — Link the Form to your Sheet
+
+1. In the Form editor, click the **Responses** tab
+2. Click the **green Sheets icon** ("Link to Sheets")
+3. Choose **Select existing spreadsheet** and pick your existing leaderboard Sheet
+4. Google will create a new tab called **"Form Responses 1"** in your Sheet
+5. **Rename that tab** to exactly `Signups` (right-click the tab → Rename)
+6. Publish the `Signups` tab to the web as CSV, same as you did for Players and Games (File → Share → Publish to web → select Signups → CSV → Publish)
+
+---
+
+### Step 3 — Add the Form URL to the leaderboard
+
+1. Open `index.html` in a text editor
+2. Find this line near the top of the `<script>` section:
+   ```
+   const FORM_URL = '';
+   ```
+3. Paste your Form link between the quotes:
+   ```
+   const FORM_URL = 'https://forms.gle/yourformlink';
+   ```
+4. Save and re-upload `index.html` to GitHub
+
+---
+
+### Step 4 — Create the Session tab (attendance checklist)
+
+Add a new tab to your Sheet named `Session`. Set it up as follows:
+
+**Columns A–C: Attendance checklist**
+
+| player_name | player_id | attending |
+|-------------|-----------|-----------|
+| Rachel | 1 | FALSE |
+| Louise | 2 | FALSE |
+| Jeff | 3 | FALSE |
+| Donna | 4 | FALSE |
+| Ellie | 5 | FALSE |
+| Monica | 6 | FALSE |
+| Sasha | 7 | FALSE |
+| Sung | 8 | FALSE |
+| Lystra | 9 | FALSE |
+| Jill | 10 | FALSE |
+| Player 1 | 11 | FALSE |
+| Player 2 | 12 | FALSE |
+
+- Select cells C2:C13, then go to **Insert → Checkbox** — this turns the FALSE values into real checkboxes
+- At the meeting, check each person who is present
+
+**Columns E–M: Pre-populated game rows (Tables 1–3)**
+
+In column E row 1, add headers matching the Games tab:
+`date` | `type` | `winner_id` | `points` | `player1_id` | `player2_id` | `player3_id` | `player4_id` | `notes`
+
+Then in E2, enter today's session date. In columns I–L (player1_id through player4_id), use formulas that pull the IDs of checked players and group them by table. Since you drag names into table groups manually, the simplest approach is:
+
+- Use columns E–F alongside the attendance list as a scratch area to note which player IDs are at each table
+- Then manually type the 4 player IDs into the game rows in the Games tab, using the Session tab as your reference
+
+This avoids complex formula logic while still keeping everything in one place.
+
+---
+
+### Resetting Between Sessions
+
+After each session:
+1. In the `Signups` tab: select all response rows (not the header) and delete them, **or** go to the Form → Responses → delete all responses
+2. In the `Session` tab: uncheck all checkboxes in column C (select C2:C13 → press Delete)
+
+---
+
+### How the RSVP Tab Works
+
+- Shows the next session date and a count (e.g. "7 of 12 signed up")
+- Lists each person who submitted the form, in order of submission
+- Updates when a member clicks **↻ Refresh**
+- The form link button lets members sign up directly from the leaderboard page
+
